@@ -2,10 +2,13 @@ import pickle
 import streamlit as st
 import pandas as pd
 
-# Chargement du modèle XGBoost retenu
-f = open('model.sav', 'rb')
-model = pickle.load(f)
+# chemin
+model_path = '/mount/src/projet_ml_2024/appli_prediction/model.sav'
 
+# Chargement du modèle XGBoost retenu
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
+    
 # Fonction de prédiction
 def prediction(X):
     prediction = model.predict(X)
